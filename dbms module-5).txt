@@ -44,3 +44,21 @@ INSERT INTO country (id, country_name, country_name_eng, country_code) VALUES
 (5, 'Polska', 'Poland', 'POL'),
 (6, 'España', 'Spain', 'ESP'),
 (7, 'Rossiya', 'Russia', 'RUS');
+SELECT 
+    co.country_name_eng AS country,
+    ci.city_name AS city,
+    cu.customer_name AS customer
+FROM country co
+LEFT JOIN city ci ON co.id = ci.country_id
+LEFT JOIN customer cu ON ci.id = cu.city_id
+ORDER BY co.country_name_eng, ci.city_name, cu.customer_name;
+
+
+SELECT 
+    co.country_name_eng AS country,
+    ci.city_name AS city,
+    cu.customer_name AS customer
+FROM country co
+INNER JOIN city ci ON co.id = ci.country_id 
+LEFT JOIN customer cu ON ci.id = cu.city_id  
+ORDER BY co.country_name_eng, ci.city_name, cu.customer_name;
